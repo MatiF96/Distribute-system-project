@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  cinemasystem:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - 5000:80
+      - 443
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 6000:5432
+    environment:
+        POSTGRES_PASSWORD: admin
+        POSTGRES_DB: cinemadb
+ #   volumes:
+  #      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
