@@ -35,6 +35,7 @@ namespace CinemaSystem
             {
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
             });
+            
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IAuthService, AuthService>();
         }
@@ -54,6 +55,12 @@ namespace CinemaSystem
                 app.UseDeveloperExceptionPage();
             }
 
+            using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                serviceScope.ServiceProvider.GetService<CinemaDbContext>().Database.Migrate();
+            }
+
+            app.UseCors("AllowAll");
             app.UseHttpsRedirection();
 
             app.UseRouting();
