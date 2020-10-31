@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  cinemasystem:
+    image: ${DOCKER_REGISTRY-}cinemasystem
+    build:
+      context: .
+      dockerfile: CinemaSystem/Dockerfile
+
+   
+  postgres:
+    image: postgres
+    environment:
+        POSTGRES_DB: cinemadb
+ #   volumes:
+  #      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
