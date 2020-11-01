@@ -38,6 +38,7 @@ namespace CinemaSystem
             
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IUsersService, UsersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

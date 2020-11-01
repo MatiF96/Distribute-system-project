@@ -1,9 +1,11 @@
 ﻿using CinemaSystem.Database;
 using CinemaSystem.Database.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 
 namespace CinemaSystem.Repositories
@@ -24,19 +26,37 @@ namespace CinemaSystem.Repositories
             return result.Entity;
         }
 
-        public Task<User> EditUser(User user)
+        public async Task<bool> DeleteUser(int userId)
         {
-            throw new NotImplementedException();
+            var user = await GetById(userId);
+            if (user == null) return false;
+            _ctx.Users.Remove(user);
+            await _ctx.SaveChangesAsync();
+            return true;
         }
 
-        public Task<User> GetById(int userId)
+        public async Task<User> EditUser(User user)
         {
-            throw new NotImplementedException();
+            _ctx.Users.Update(user);
+            await _ctx.SaveChangesAsync();
+            return user;
+        }
+
+        public async Task<IList<User>> GetAll()
+        {
+            return await _ctx.Users.ToListAsync();
+        }
+
+        public async Task<User> GetById(int userId)
+        {
+            return await _ctx.Users.FindAsync(userId);
         }
 
         public async Task<User> GetByUserName(string username)
         {
             return await _ctx.Users.SingleOrDefaultAsync(u => u.UserLogin == username);
         }
+
+
     }
 }
