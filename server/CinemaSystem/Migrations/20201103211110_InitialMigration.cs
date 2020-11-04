@@ -28,7 +28,7 @@ namespace CinemaSystem.Migrations
                     movie_id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     movie_title = table.Column<string>(nullable: false),
-                    movie_duration = table.Column<TimeSpan[]>(nullable: false)
+                    movie_duration = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,6 +102,20 @@ namespace CinemaSystem.Migrations
                         principalTable: "users",
                         principalColumn: "user_id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "movies",
+                columns: new[] { "movie_id", "movie_duration", "movie_title" },
+                values: new object[,]
+                {
+                    { 1, 120, "Avatar" },
+                    { 2, 200, "Transformers" },
+                    { 3, 220, "Spiderman: Homecoming" },
+                    { 4, 280, "Once upon a time in Hollywood" },
+                    { 5, 200, "Django" },
+                    { 6, 90, "El camino" },
+                    { 7, 120, "Joker" }
                 });
 
             migrationBuilder.CreateIndex(

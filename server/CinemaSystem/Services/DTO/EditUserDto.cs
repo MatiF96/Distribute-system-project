@@ -1,5 +1,5 @@
 ﻿
-namespace CinemaSystem.Services.Models
+namespace CinemaSystem.Services.DTO
 {
     public class EditUserDto
     {

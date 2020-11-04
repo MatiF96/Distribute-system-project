@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace CinemaSystem.Services.Models
+namespace CinemaSystem.Services.DTO
 {
     public class UserDto
     {

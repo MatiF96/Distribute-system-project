@@ -12,6 +12,7 @@ namespace CinemaSystem.Repositories
         Task<Showing> GetById(int showingId);
         Task<Showing> Add(Showing showing);
         Task<Showing> Edit(Showing showing);
-        Task Delete(int showingId);
+        Task<int?> Delete(int showingId);
+        Task<IList<Reservations>> GetReservations(int showingId);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using CinemaSystem.Database;
 using CinemaSystem.Database.Models;
 using CinemaSystem.Repositories;
-using CinemaSystem.Services.Models;
+using CinemaSystem.Services.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

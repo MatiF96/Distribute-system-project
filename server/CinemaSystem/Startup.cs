@@ -19,6 +19,8 @@ namespace CinemaSystem
 {
     public class Startup
     {
+        private bool InDocker { get { return Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true"; } }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,12 +35,20 @@ namespace CinemaSystem
             services.AddSwaggerGen();
             services.AddDbContext<CinemaDbContext>(options =>
             {
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"));
+                string connectionString = InDocker ? Configuration.GetConnectionString("DefaultConnection") : Configuration.GetConnectionString("MigrationConnection");
+                options.UseNpgsql(connectionString);
             });
-            
+
             services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IMoviesRepository, MoviesRepository>();
+            services.AddScoped<IHalesRepository, HalesRepository>();
+            services.AddScoped<IReservationsRepository, ReservationsRepository>();
+            services.AddScoped<IShowingsRepository, ShowingsRepository>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUsersService, UsersService>();
+            services.AddScoped<IMoviesService, MoviesService>();
+            services.AddScoped<IHalesService, HalesService>();
+            services.AddScoped<IShowingsService, ShowingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,14 +65,13 @@ namespace CinemaSystem
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 serviceScope.ServiceProvider.GetService<CinemaDbContext>().Database.Migrate();
             }
 
             app.UseCors("AllowAll");
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

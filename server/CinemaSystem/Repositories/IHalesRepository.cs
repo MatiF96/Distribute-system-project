@@ -12,6 +12,7 @@ namespace CinemaSystem.Repositories
         Task<Hall> GetById(int hallId);
         Task<Hall> Add(Hall hall);
         Task<Hall> Edit(Hall hall);
-        Task Delete(int hallId);
+        Task<int?> Delete(int hallId);
+        Task<IList<Showing>> GetShowings(int hallId);
     }
 }

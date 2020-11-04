@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CinemaSystem.Database.Models;
 using CinemaSystem.Repositories;
-using CinemaSystem.Services.Models;
+using CinemaSystem.Services.DTO;
 using Microsoft.AspNetCore.Identity;
 
 namespace CinemaSystem.Services

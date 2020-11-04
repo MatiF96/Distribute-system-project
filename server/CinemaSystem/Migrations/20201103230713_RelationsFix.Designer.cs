@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CinemaSystem.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    [Migration("20201031134933_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20201103230713_RelationsFix")]
+    partial class RelationsFix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,10 +47,9 @@ namespace CinemaSystem.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<TimeSpan[]>("MovieDuration")
-                        .IsRequired()
+                    b.Property<int>("MovieDuration")
                         .HasColumnName("movie_duration")
-                        .HasColumnType("interval[]");
+                        .HasColumnType("integer");
 
                     b.Property<string>("MovieTitle")
                         .IsRequired()
@@ -61,6 +60,50 @@ namespace CinemaSystem.Migrations
                         .HasName("movies_pkey");
 
                     b.ToTable("movies");
+
+                    b.HasData(
+                        new
+                        {
+                            MovieId = 1,
+                            MovieDuration = 120,
+                            MovieTitle = "Avatar"
+                        },
+                        new
+                        {
+                            MovieId = 2,
+                            MovieDuration = 200,
+                            MovieTitle = "Transformers"
+                        },
+                        new
+                        {
+                            MovieId = 3,
+                            MovieDuration = 220,
+                            MovieTitle = "Spiderman: Homecoming"
+                        },
+                        new
+                        {
+                            MovieId = 4,
+                            MovieDuration = 280,
+                            MovieTitle = "Once upon a time in Hollywood"
+                        },
+                        new
+                        {
+                            MovieId = 5,
+                            MovieDuration = 200,
+                            MovieTitle = "Django"
+                        },
+                        new
+                        {
+                            MovieId = 6,
+                            MovieDuration = 90,
+                            MovieTitle = "El camino"
+                        },
+                        new
+                        {
+                            MovieId = 7,
+                            MovieDuration = 120,
+                            MovieTitle = "Joker"
+                        });
                 });
 
             modelBuilder.Entity("CinemaSystem.Database.Models.Reservations", b =>
@@ -157,8 +200,8 @@ namespace CinemaSystem.Migrations
 
             modelBuilder.Entity("CinemaSystem.Database.Models.Reservations", b =>
                 {
-                    b.HasOne("CinemaSystem.Database.Models.Reservations", "ReservationShowing")
-                        .WithMany("InverseReservationShowing")
+                    b.HasOne("CinemaSystem.Database.Models.Showing", "ReservationShowing")
+                        .WithMany("ShowingReservations")
                         .HasForeignKey("ReservationShowingId")
                         .HasConstraintName("fk_reservations_showing_id")
                         .IsRequired();

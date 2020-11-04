@@ -1,16 +1,24 @@
-version: '3.4'
+version: "3.4"
 
 services:
   cinemasystem:
-    image: ${DOCKER_REGISTRY-}cinemasystem
     build:
       context: .
       dockerfile: CinemaSystem/Dockerfile
-
-   
+    depends_on:
+      - postgres
+    ports:
+      - 5000:80
+      - 443
+    environment:
+      - ASPNETCORE_URLS=http://+:443;http://+:80
+    restart: always
   postgres:
     image: postgres
+    restart: always
+    ports:
+      - 6000:5432
     environment:
-        POSTGRES_DB: cinemadb
- #   volumes:
-  #      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: cinemadb

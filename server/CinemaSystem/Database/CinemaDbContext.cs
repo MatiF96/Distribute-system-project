@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CinemaSystem.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -79,7 +80,7 @@ namespace CinemaSystem.Database
                 entity.Property(e => e.ReservationUserId).HasColumnName("reservation_user_id");
 
                 entity.HasOne(d => d.ReservationShowing)
-                    .WithMany(p => p.InverseReservationShowing)
+                    .WithMany(s => s.ShowingReservations)
                     .HasForeignKey(d => d.ReservationShowingId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("fk_reservations_showing_id");
@@ -153,9 +154,52 @@ namespace CinemaSystem.Database
                     .HasColumnName("user_type");
             });
 
+            modelBuilder.Entity<Movie>().HasData(SeedMovies());
             OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        private List<Movie> SeedMovies()
+        {
+            return new List<Movie> {
+                new Movie {
+                    MovieId = 1,
+                    MovieTitle = "Avatar",
+                    MovieDuration = 120,
+                },
+                new Movie {
+                    MovieId = 2,
+                    MovieTitle = "Transformers",
+                    MovieDuration = 200,
+                },
+                new Movie {
+                    MovieId = 3,
+                    MovieTitle = "Spiderman: Homecoming",
+                    MovieDuration = 220,
+                },
+                new Movie {
+                    MovieId = 4,
+                    MovieTitle = "Once upon a time in Hollywood",
+                    MovieDuration = 280,
+                },
+                new Movie {
+                    MovieId = 5,
+                    MovieTitle = "Django",
+                    MovieDuration = 200,
+                },
+                new Movie {
+                    MovieId = 6,
+                    MovieTitle = "El camino",
+                    MovieDuration = 90,
+                },
+                new Movie {
+                    MovieId = 7,
+                    MovieTitle = "Joker",
+                    MovieDuration = 120,
+                }
+
+            };
+        }
     }
 }

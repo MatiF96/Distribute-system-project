@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using CinemaSystem.Services;
-using CinemaSystem.Services.Models;
+using CinemaSystem.Services.DTO;
 using CinemaSystem.Utils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,7 +33,7 @@ namespace CinemaSystem.Controllers
 
         [HttpPost("register")]
         [ProducesResponseType(typeof(UserDto), 200)]
-        [ProducesResponseType(400)]
+        [ProducesResponseType(typeof(ErrorMessage), 400)]
         public async Task<ActionResult> Register(AuthDto credentials)
         {
             var result = await _authService.Register(credentials);

@@ -12,5 +12,6 @@ namespace CinemaSystem.Database.Models
 
         public virtual Hall ShowingHall { get; set; }
         public virtual Movie ShowingMovie { get; set; }
+        public virtual ICollection<Reservations> ShowingReservations { get; set; }
     }
 }

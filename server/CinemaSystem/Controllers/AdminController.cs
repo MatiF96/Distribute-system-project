@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CinemaSystem.Services;
-using CinemaSystem.Services.Models;
+using CinemaSystem.Services.DTO;
 using CinemaSystem.Utils;
 using Microsoft.AspNetCore.Mvc;
 

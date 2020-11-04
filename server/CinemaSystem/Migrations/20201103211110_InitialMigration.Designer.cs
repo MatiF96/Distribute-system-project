@@ -3,15 +3,17 @@ using System;
 using CinemaSystem.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CinemaSystem.Migrations
 {
     [DbContext(typeof(CinemaDbContext))]
-    partial class CinemaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201103211110_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,8 +200,8 @@ namespace CinemaSystem.Migrations
 
             modelBuilder.Entity("CinemaSystem.Database.Models.Reservations", b =>
                 {
-                    b.HasOne("CinemaSystem.Database.Models.Showing", "ReservationShowing")
-                        .WithMany("ShowingReservations")
+                    b.HasOne("CinemaSystem.Database.Models.Reservations", "ReservationShowing")
+                        .WithMany("InverseReservationShowing")
                         .HasForeignKey("ReservationShowingId")
                         .HasConstraintName("fk_reservations_showing_id")
                         .IsRequired();

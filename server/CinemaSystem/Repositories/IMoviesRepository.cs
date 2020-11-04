@@ -12,6 +12,7 @@ namespace CinemaSystem.Repositories
         Task<Movie> GetById(int movieId);
         Task<Movie> Add(Movie movie);
         Task<Movie> Edit(Movie movie);
-        Task Delete(int movieId);
+        Task<int?> Delete(int movieId);
+        Task<IList<Showing>> GetShowings(int movieId);
     }
 }
