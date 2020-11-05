@@ -72,6 +72,9 @@ namespace CinemaSystem.Database
                 entity.Property(e => e.ReservationId)
                     .HasColumnName("reservation_id")
                     .ValueGeneratedOnAdd();
+                entity.Property(e => e.IsCompleted)
+                .HasColumnName("reservation_completed")
+                .HasDefaultValue(false);
 
                 entity.Property(e => e.ReservationSeat).HasColumnName("reservation_seat");
 

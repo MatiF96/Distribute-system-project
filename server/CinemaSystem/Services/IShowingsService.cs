@@ -13,5 +13,6 @@ namespace CinemaSystem.Services
         Task<ShowingDto> AddShowing(AddShowingDto showing);
         Task<int?> DeleteShowing(int showingId);
         Task<ShowingDto> EditShowing(int showingId, AddShowingDto showing);
+        Task<IList<SeatDto>> GetTakenSeats(int showingId);
     }
 }

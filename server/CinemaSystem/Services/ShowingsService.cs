@@ -55,5 +55,13 @@ namespace CinemaSystem.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<IList<SeatDto>> GetTakenSeats(int showingId)
+        {
+            var reservations = await _showingsRepository.GetReservations(showingId);
+            if (reservations == null) return null;
+            var takenSeats = reservations.Select(r => new SeatDto { Number = r.ReservationSeat, IsTaken = r.IsCompleted });
+            return takenSeats.ToList();
+        }
     }
 }
