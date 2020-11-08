@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CinemaSystem.Database.Models;
@@ -40,9 +39,31 @@ namespace CinemaSystem.Services
             return await _showingsRepository.Delete(showingId);
         }
 
-        public Task<ShowingDto> EditShowing(int showingId, AddShowingDto showing)
+        public async Task<ShowingDto> EditShowing(int showingId, EditShowingDto showing)
         {
-            throw new NotImplementedException();
+            var editedShowing = await _showingsRepository.GetById(showingId);
+            if (editedShowing == null) return null;
+            if (showing.HallId != null)
+            {
+                var hall = await _halesRepository.GetById((int)showing.HallId);
+                if (hall == null) return null;
+                else editedShowing.ShowingHall = hall;
+
+            }
+
+            if (showing.MovieId != null)
+            {
+                var movie = await _moviesRepository.GetById((int)showing.MovieId);
+                if (movie == null) return null;
+                else editedShowing.ShowingMovie = movie;
+            }
+
+            if (showing.Date != null)
+            {
+                editedShowing.ShowingDate = showing.Date;
+            }
+
+            return new ShowingDto(await _showingsRepository.Edit(editedShowing));
         }
 
         public async Task<IList<ShowingDto>> GetAll()
@@ -51,9 +72,10 @@ namespace CinemaSystem.Services
             return showings.Select(s => new ShowingDto(s)).ToList();
         }
 
-        public Task<ShowingDto> GetById(int showingId)
+        public async Task<ShowingDto> GetById(int showingId)
         {
-            throw new NotImplementedException();
+            var showing = await _showingsRepository.GetById(showingId);
+            return showing == null ? null : new ShowingDto(showing);
         }
 
         public async Task<IList<SeatDto>> GetTakenSeats(int showingId)

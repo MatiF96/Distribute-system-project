@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CinemaSystem.Database.Models;
+﻿using CinemaSystem.Database.Models;
 
 namespace CinemaSystem.Services.DTO
 {
@@ -12,7 +8,7 @@ namespace CinemaSystem.Services.DTO
         public string Title { get; set; }
         public int Duration { get; set; }
 
-        public MovieDto(){}
+        public MovieDto() { }
 
         public MovieDto(Movie movie)
         {

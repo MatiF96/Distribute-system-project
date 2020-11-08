@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaSystem.Controllers
@@ -11,5 +7,12 @@ namespace CinemaSystem.Controllers
     [ApiController]
     public class ReservationsController : ControllerBase
     {
+
+
+        //[HttpPost]
+        //public async Task<ActionResult> Post()
+        //{
+
+        //}
     }
 }

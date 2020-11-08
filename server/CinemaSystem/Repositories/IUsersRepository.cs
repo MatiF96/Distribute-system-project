@@ -1,9 +1,6 @@
-﻿using CinemaSystem.Database;
-using CinemaSystem.Database.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CinemaSystem.Database.Models;
 
 namespace CinemaSystem.Repositories
 {

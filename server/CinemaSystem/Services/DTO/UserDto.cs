@@ -1,10 +1,5 @@
-﻿using CinemaSystem.Database.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using CinemaSystem.Database.Models;
 
 namespace CinemaSystem.Services.DTO
 {

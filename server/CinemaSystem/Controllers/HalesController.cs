@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using CinemaSystem.Services;
 using CinemaSystem.Services.DTO;
 using CinemaSystem.Utils;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CinemaSystem.Controllers
@@ -64,7 +61,7 @@ namespace CinemaSystem.Controllers
         [HttpDelete("{hallId}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(typeof(ErrorMessage), 404)]
-        public async Task<ActionResult<HallDto>> Delete(int hallId)
+        public async Task<ActionResult> Delete(int hallId)
         {
             var result = await _halesService.DeleteHall(hallId);
             if (result == null) return NotFound(new ErrorMessage("Hall not found"));
