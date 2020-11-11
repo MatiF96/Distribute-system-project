@@ -25,7 +25,7 @@ namespace CinemaSystem.Services.DTO
             Username = user.UserLogin;
             Role = user.UserType;
         }
-        public UserDto() { }
+        public UserDto(Task<User> result) { }
 
     }
 }
