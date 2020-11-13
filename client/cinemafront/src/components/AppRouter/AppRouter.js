@@ -1,21 +1,17 @@
 import React, {useContext} from 'react';
-import {Switch, Route} from "react-router-dom";
-import {PagesContext} from '../../contexts/PagesContext';
+import {Switch, Route, Router} from "react-router-dom";
+import Home from '../../containers/Home';
+import Movies from '../../containers/Movies';
+import Halls from '../../containers/Halls';
+import Hall from '../Hall';
 
 const AppRouter = () => {
-    const { pages } = useContext(PagesContext);
   return (
     <Switch>
-        {pages.map((page,index)=>{
-            return (
-                <Route
-                component={page.component}
-                key={index}
-                exact={true}
-                path={page.url}
-                />
-            )
-        })}
+        <Route exact path='/' component={Home} />
+        <Route exact path='/movies' component={Movies} />
+        <Route exact path='/halls' component={Halls} />
+        <Route path="/halls/:id" component={Hall} />
     </Switch>
 )};
 

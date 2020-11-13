@@ -1,29 +1,26 @@
 import Input from '@material-ui/core/Input';
-import { Title } from './styled';
-import axios from 'axios';
+import { Container, Title } from './styled';
 import { useState } from 'react';
-import {Container} from './styled'
+import HallsApi from "../../api/HallsApi";
 
-const AddHall = ({refreshHalls}) => {
+const AddHall = ({ refreshData }) => {
   const [name, setName] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    const hall = {
+    let data = {
       name: name
-    }
+    };
 
-    axios
-      .post('api/Hales', hall)
-      .then(response => {
-        console.log(response)
-        refreshHalls();
-        setName("");
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    HallsApi.create(data)
+    .then(() => {
+      refreshData()
+      setName("")
+    })
+    .catch(e => {
+      console.log(e);
+    });
   }
 
   const handleChange = (e) => {
@@ -35,10 +32,11 @@ const AddHall = ({refreshHalls}) => {
           <form onSubmit={handleSubmit}>
             <Input
               type="text"
+              id="title"
               name="title"
               value={name}
-              placeholder="Nazwa sali"
               onChange={handleChange}
+              placeholder="Nazwa sali"
             />
           </form>
       </Container>

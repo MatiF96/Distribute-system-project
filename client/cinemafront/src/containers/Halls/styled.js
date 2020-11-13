@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
     display: flex;
@@ -8,7 +9,7 @@ export const Container = styled.div`
 
 export const CenterContainer = styled.div`
     display: flex;
-    width: 1000px;
+    width: 1300px;
     flex-direction: column;
     align-items: center;
     background: #ff80aa;
@@ -36,7 +37,7 @@ export const List = styled.ul`
     align-items: center;
 `
 
-export const Item = styled.li`
+export const StyledLink = styled(Link)`
     display: flex;
     flex-basis: 30%;
     font-size: 1.8em;

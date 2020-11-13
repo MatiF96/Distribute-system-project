@@ -18,3 +18,11 @@ export const Title = styled.p`
     font-size: 1.6em;
     margin: 5px;
 `
+
+export const StyledInput = styled.p`
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.6em;
+    margin: 5px;
+`

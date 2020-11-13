@@ -13,6 +13,10 @@ const reset = css`
     color: #f1f1f1;
   }
 
+  a {
+    text-decoration: inherit;
+    color: inherit;
+  }
 `;
 
 export default reset;

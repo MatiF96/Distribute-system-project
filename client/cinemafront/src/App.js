@@ -14,12 +14,12 @@ const App = () => {
     return (
       <React.Fragment>
         <GlobalStyle/>
-        <Router>
-          <PagesContextProvider>
-            <Navbar/>
-            <AppRouter/>
-          </PagesContextProvider>
-        </Router>
+        <PagesContextProvider>
+          <Router>
+              <Navbar/>
+              <AppRouter/>
+          </Router>
+        </PagesContextProvider>
       </React.Fragment>
     );
   };
