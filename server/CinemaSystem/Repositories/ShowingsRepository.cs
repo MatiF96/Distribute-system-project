@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CinemaSystem.Database;
@@ -59,7 +58,7 @@ namespace CinemaSystem.Repositories
             var showing = await _ctx.Showings
                 .Include(s => s.ShowingReservations)
                 .SingleOrDefaultAsync(s => s.ShowingId == showingId);
-            return showing.ShowingReservations.ToList();
+            return showing?.ShowingReservations?.ToList() ?? new List<Reservations>();
         }
     }
 }

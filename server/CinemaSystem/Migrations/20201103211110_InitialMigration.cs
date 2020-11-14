@@ -10,8 +10,7 @@ namespace CinemaSystem.Migrations
         {
             migrationBuilder.CreateTable(
                 name: "hales",
-                columns: table => new
-                {
+                columns: table => new {
                     hall_id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     hall_name = table.Column<string>(nullable: true)
@@ -23,8 +22,7 @@ namespace CinemaSystem.Migrations
 
             migrationBuilder.CreateTable(
                 name: "movies",
-                columns: table => new
-                {
+                columns: table => new {
                     movie_id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     movie_title = table.Column<string>(nullable: false),
@@ -37,8 +35,7 @@ namespace CinemaSystem.Migrations
 
             migrationBuilder.CreateTable(
                 name: "users",
-                columns: table => new
-                {
+                columns: table => new {
                     user_id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     user_login = table.Column<string>(nullable: false),
@@ -52,8 +49,7 @@ namespace CinemaSystem.Migrations
 
             migrationBuilder.CreateTable(
                 name: "showings",
-                columns: table => new
-                {
+                columns: table => new {
                     showing_id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     showing_movie_id = table.Column<int>(nullable: false),
@@ -79,8 +75,7 @@ namespace CinemaSystem.Migrations
 
             migrationBuilder.CreateTable(
                 name: "reservations",
-                columns: table => new
-                {
+                columns: table => new {
                     reservation_id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     reservation_showing_id = table.Column<int>(nullable: false),

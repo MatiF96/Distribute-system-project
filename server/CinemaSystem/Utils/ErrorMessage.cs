@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace CinemaSystem.Utils
+﻿namespace CinemaSystem.Utils
 {
     public class ErrorMessage
     {

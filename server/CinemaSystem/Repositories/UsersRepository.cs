@@ -1,12 +1,8 @@
-﻿using CinemaSystem.Database;
-using CinemaSystem.Database.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CinemaSystem.Database;
+using CinemaSystem.Database.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CinemaSystem.Repositories
 {

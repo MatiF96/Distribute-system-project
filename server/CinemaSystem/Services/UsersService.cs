@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CinemaSystem.Database.Models;
 using CinemaSystem.Repositories;
 using CinemaSystem.Services.DTO;
-using Microsoft.AspNetCore.Identity;
 
 namespace CinemaSystem.Services
 {
@@ -20,7 +17,7 @@ namespace CinemaSystem.Services
 
         public async Task<bool> DeleteUser(int userId)
         {
-           return await _usersRepository.DeleteUser(userId);
+            return await _usersRepository.DeleteUser(userId);
         }
 
         public async Task<UserDto> EditUserRole(int userId, string role)

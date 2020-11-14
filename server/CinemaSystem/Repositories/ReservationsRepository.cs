@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CinemaSystem.Database;
@@ -32,6 +31,13 @@ namespace CinemaSystem.Repositories
             return reservationId;
         }
 
+        public async Task Delete(IList<int> ids)
+        {
+            var reservations = await GetByIds(ids);
+            _ctx.Reservations.RemoveRange(reservations);
+            await _ctx.SaveChangesAsync();
+        }
+
         public async Task<Reservations> Edit(Reservations reservation)
         {
             if (reservation == null) return null;
@@ -40,16 +46,20 @@ namespace CinemaSystem.Repositories
             return reservation;
         }
 
-        public async Task<IList<Reservations>> GetAll()
+        public async Task Edit(IList<Reservations> reservations)
         {
-            return await _ctx.Reservations.ToListAsync();
+            _ctx.Reservations.UpdateRange(reservations);
+            await _ctx.SaveChangesAsync();
         }
 
-        public async Task<Reservations> GetById(int reservationId)
-        {
-            return await _ctx.Reservations
+        public async Task<IList<Reservations>> GetAll() => await _ctx.Reservations.ToListAsync();
+
+        public Task<Reservations> GetById(int reservationId) => _ctx.Reservations
                 .Include(r => r.ReservationShowing)
                 .SingleOrDefaultAsync(r => r.ReservationId == reservationId);
-        }
+
+        public async Task<IList<Reservations>> GetByIds(IList<int> ids) => await _ctx.Reservations
+            .Where(r => ids.Contains(r.ReservationId))
+            .ToListAsync();
     }
 }
