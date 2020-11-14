@@ -7,17 +7,6 @@ import HallsApi from "../../api/HallsApi";
 const Halls = () => {
   const [halls, setHalls] = useState([])
 
-  const deleteHall = id => {
-    HallsApi.remove(id)
-    .then(response => {
-      console.log(response)
-      getHalls();
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
   const getHalls = () => {
     HallsApi.getAll()
     .then(response => {

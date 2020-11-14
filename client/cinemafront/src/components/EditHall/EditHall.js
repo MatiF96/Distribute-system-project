@@ -1,9 +1,15 @@
-import { Container, Title, StyledInput } from './styled';
-import { useState } from 'react';
+import { Container, Title } from './styled';
+import { useEffect, useState } from 'react';
 import HallsApi from "../../api/HallsApi";
+import Input from '@material-ui/core/Input';
 
-const AddHall = ({ refreshData }) => {
+const EditHall = ({ currentHall, refreshHall }) => {
   const [name, setName] = useState('');
+
+  useEffect(() =>{
+    setName(currentHall.name)
+    // eslint-disable-next-line
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -12,10 +18,11 @@ const AddHall = ({ refreshData }) => {
       name: name
     };
 
-    HallsApi.create(data)
-    .then(() => {
-      refreshData()
+    HallsApi.update(currentHall.id,data)
+    .then((res) => {
+      refreshHall()
       setName("")
+      console.log(res);
     })
     .catch(e => {
       console.log(e);
@@ -27,9 +34,9 @@ const AddHall = ({ refreshData }) => {
   }
     return (
       <Container>
-        <Title>Dodaj salę</Title>
+        <Title>Edytuj salę:</Title>
           <form onSubmit={handleSubmit}>
-            <StyledInput
+            <Input
               type="text"
               id="title"
               name="title"
@@ -41,4 +48,4 @@ const AddHall = ({ refreshData }) => {
       </Container>
   )};
   
-  export default AddHall;
+  export default EditHall;

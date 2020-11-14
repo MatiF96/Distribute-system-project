@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Input from '@material-ui/core/Input';
 
 export const Container = styled.div`
     display: flex;
@@ -19,7 +20,7 @@ export const Title = styled.p`
     margin: 5px;
 `
 
-export const StyledInput = styled.p`
+export const StyledInput = styled(Input)`
     display: flex;
     justify-content: center;
     font-weight: bold;
