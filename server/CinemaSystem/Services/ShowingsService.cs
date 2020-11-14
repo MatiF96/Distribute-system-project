@@ -85,5 +85,15 @@ namespace CinemaSystem.Services
             var takenSeats = reservations.Select(r => new SeatDto { Number = r.ReservationSeat, IsTaken = r.IsCompleted });
             return takenSeats.ToList();
         }
+
+        public async Task<IList<int>> GetUserReservations(int showingId, int userId)
+        {
+            var reservations = await _showingsRepository.GetReservations(showingId);
+            if (reservations == null) return null;
+
+            return reservations
+                .Where(r => r.ReservationUserId == userId)
+                .Select(r => r.ReservationId).ToList();
+        }
     }
 }

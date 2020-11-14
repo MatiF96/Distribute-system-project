@@ -45,6 +45,7 @@ namespace CinemaSystem
             services.AddScoped<IMoviesService, MoviesService>();
             services.AddScoped<IHalesService, HalesService>();
             services.AddScoped<IShowingsService, ShowingsService>();
+            services.AddScoped<IReservationsService, ReservationsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,5 +11,9 @@ namespace CinemaSystem.Repositories
         Task<Reservations> Add(Reservations reservation);
         Task<Reservations> Edit(Reservations reservation);
         Task<int?> Delete(int reservationId);
+        Task Delete(IList<int> ids);
+        Task Edit(IList<Reservations> reservation);
+        Task<IList<Reservations>> GetByIds(IList<int> ids);
+
     }
 }

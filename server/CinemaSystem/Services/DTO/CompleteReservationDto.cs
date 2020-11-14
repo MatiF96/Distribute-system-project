@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace CinemaSystem.Services.DTO
 {
-    public class AddReservationDto
+    public class CompleteReservationDto
     {
-        public int ShowingId { get; set; }
         public int UserId { get; set; }
-        public int Seat { get; set; }
+        public int ShowingId { get; set; }
     }
 }
