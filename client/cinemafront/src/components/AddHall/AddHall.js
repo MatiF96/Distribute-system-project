@@ -1,4 +1,4 @@
-import { Container, Title, StyledInput } from './styled';
+import { Container, Title, StyledForm, StyledInput, StyledButton } from './styled';
 import { useState } from 'react';
 import HallsApi from "../../api/HallsApi";
 
@@ -28,7 +28,7 @@ const AddHall = ({ refreshData }) => {
     return (
       <Container>
         <Title>Dodaj salę</Title>
-          <form onSubmit={handleSubmit}>
+          <StyledForm onSubmit={handleSubmit}>
             <StyledInput
               type="text"
               id="title"
@@ -37,7 +37,8 @@ const AddHall = ({ refreshData }) => {
               onChange={handleChange}
               placeholder="Nazwa sali"
             />
-          </form>
+            <StyledButton type="submit"> Dodaj </StyledButton>
+          </StyledForm>
       </Container>
   )};
   

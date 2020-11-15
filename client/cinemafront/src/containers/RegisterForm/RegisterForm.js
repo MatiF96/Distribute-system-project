@@ -3,7 +3,7 @@ import {Container, CenterContainer, StyledForm,  Text, StyledButton, Label, Aler
 import AuthService from "../../components/AuthService";
 import { withRouter } from "react-router-dom"
 
-const LoginForm = (props) => {
+const RegisterForm = (props) => {
 
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
@@ -12,7 +12,7 @@ const LoginForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    AuthService.login(login,password).then(
+    AuthService.register(login,password).then(
     () => {
       props.history.push("/");
     },
@@ -23,7 +23,6 @@ const LoginForm = (props) => {
   }
 
   const handleChange = (e) => {
-    setShowAlert(false)
     const { target } = e;
     const { name, value } = target;
 
@@ -43,7 +42,7 @@ const LoginForm = (props) => {
               name="login"
               value={login}
               onChange={handleChange}
-              placeholder="Podaj login"
+              placeholder="Wpisz nowy login"
               />
               <Label>Hasło:</Label>
               <Text 
@@ -52,13 +51,13 @@ const LoginForm = (props) => {
               name="password"
               value={password}
               onChange={handleChange}
-              placeholder="Podaj hasło"
+              placeholder="Wpisz hasło"
               />
-              <StyledButton type="submit" >Zaloguj</StyledButton>
+              <StyledButton type="submit" >Zaarejestruj</StyledButton>
               {showAlert?<Alert>Niepoprawne dane!</Alert>:null}
           </StyledForm>
       </CenterContainer>
     </Container>
 )};
 
-export default withRouter(LoginForm);
+export default withRouter(RegisterForm);
