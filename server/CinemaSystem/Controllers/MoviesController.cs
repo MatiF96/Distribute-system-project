@@ -61,9 +61,8 @@ namespace CinemaSystem.Controllers
         [ProducesResponseType(typeof(ErrorMessage), 400)]
         [ProducesResponseType(typeof(ErrorMessage), 404)]
         public async Task<ActionResult<MovieDto>> EditMovie(int movieId, [FromBody] EditMovieDto movie)
-        {   // validate movie
-            if (string.IsNullOrEmpty(movie.Title)) return BadRequest(new ErrorMessage("Title cannot be empty"));
-            if (movie.Duration <= 0) return BadRequest(new ErrorMessage("Duration must be longer than 0 minutes"));
+        {
+            if ((movie?.Duration ?? 0) <= 0) return BadRequest(new ErrorMessage("Duration must be longer than 0 minutes"));
             var result = await _moviesService.Edit(movieId, movie);
             return result == null ? NotFound(new ErrorMessage("Movie not found")) : (ActionResult)Ok(result);
         }

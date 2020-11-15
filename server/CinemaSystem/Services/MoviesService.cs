@@ -19,8 +19,8 @@ namespace CinemaSystem.Services
         public async Task<MovieDto> Add(AddMovieDto movie)
         {
             var entity = new Movie {
-                MovieTitle = movie.Title
-                // change duration to correct data type
+                MovieTitle = movie.Title,
+                MovieDuration = movie.Duration
             };
             var newMovie = await _moviesRepository.Add(entity);
             return new MovieDto(newMovie);
@@ -35,8 +35,14 @@ namespace CinemaSystem.Services
         {
             var entity = await _moviesRepository.GetById(movieId);
             if (entity == null) return null;
-            entity.MovieTitle = movie.Title;
-
+            if (!string.IsNullOrEmpty(movie.Title))
+            {
+                entity.MovieTitle = movie.Title;
+            }
+            if (movie.Duration != null && movie.Duration > 0)
+            {
+                entity.MovieDuration = (int)movie.Duration;
+            }
             var editedMovie = await _moviesRepository.Edit(entity);
             return new MovieDto(editedMovie);
         }

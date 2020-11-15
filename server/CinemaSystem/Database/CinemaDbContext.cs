@@ -46,6 +46,7 @@ namespace CinemaSystem.Database
 
                 entity.Property(e => e.MovieId)
                     .HasColumnName("movie_id")
+                    .HasIdentityOptions(startValue: 8)
                     .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.MovieDuration)

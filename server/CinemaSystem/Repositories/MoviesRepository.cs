@@ -18,7 +18,7 @@ namespace CinemaSystem.Repositories
 
         public async Task<Movie> Add(Movie movie)
         {
-            var newMovie = await _ctx.Movies.AddAsync(movie);
+            var newMovie = _ctx.Movies.Add(movie);
             await _ctx.SaveChangesAsync();
             return newMovie.Entity;
         }

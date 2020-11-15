@@ -7,5 +7,6 @@ namespace CinemaSystem.Services
     {
         Task<UserDto> Register(AuthDto credentials);
         Task<UserDto> Login(AuthDto credentials);
+        Task<bool> UserExists(string username);
     }
 }

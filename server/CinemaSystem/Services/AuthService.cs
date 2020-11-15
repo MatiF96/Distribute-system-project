@@ -28,14 +28,21 @@ namespace CinemaSystem.Services
 
         public async Task<UserDto> Register(AuthDto credentials)
         {
+            var users = await _usersRepository.GetAll();
             var user = new User {
                 UserLogin = credentials.Username,
                 UserPassword = await HashPassword(credentials.Password),
-                UserType = UserRoles.ADMIN,
+                UserType = UserRoles.CUSTOMER,
             };
+            if (users.Count == 0) { user.UserType = UserRoles.ADMIN; };
 
             var result = await _usersRepository.AddUser(user);
             return new UserDto(result);
+        }
+
+        public async Task<bool> UserExists(string username)
+        {
+            return await _usersRepository.GetByUserName(username) != null;
         }
 
         private async Task<string> HashPassword(string password)

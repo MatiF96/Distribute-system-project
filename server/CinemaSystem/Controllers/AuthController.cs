@@ -32,6 +32,11 @@ namespace CinemaSystem.Controllers
         [ProducesResponseType(400)]
         public async Task<ActionResult> Register(AuthDto credentials)
         {
+            if (await _authService.UserExists(credentials.Username))
+            {
+                return BadRequest(new ErrorMessage("Username already taken!"));
+            }
+
             var result = await _authService.Register(credentials);
             return Ok(result);
         }
