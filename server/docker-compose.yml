@@ -1,18 +1,63 @@
-version: "3.4"
-
+version: "3.8"
 services:
-  cinemasystem:
+  caddy-gen:
+    container_name: caddy2-gen
+    image: szoomy999/caddy2-gen
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    ports:
+      - "5000:80"
+    depends_on:
+      - cinemasystem1
+      - cinemasystem2
+      - cinemasystem3
+
+  cinemasystem1:
     build:
       context: .
       dockerfile: CinemaSystem/Dockerfile
     depends_on:
       - postgres
-    ports:
-      - 5000:80
-      - 443
     environment:
-      - ASPNETCORE_URLS=http://+:443;http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     restart: always
+    labels:
+      - "virtual.port=80"
+      - "virtual.host=localhost"
+      - "virtual.lb-policy=ip_hash"
+
+  cinemasystem2:
+    build:
+      context: .
+      dockerfile: CinemaSystem/Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    restart: always
+    labels:
+      - "virtual.port=80"
+      - "virtual.host=localhost"
+      - "virtual.lb-policy=ip_hash"
+
+  cinemasystem3:
+    build:
+      context: .
+      dockerfile: CinemaSystem/Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    restart: always
+    labels:
+      - "virtual.port=80"
+      - "virtual.host=localhost"
+      - "virtual.lb-policy=ip_hash"
+
   postgres:
     image: postgres
     restart: always

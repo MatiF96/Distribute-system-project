@@ -13,6 +13,7 @@ namespace CinemaSystem.Hubs
     {
         public async override Task OnConnectedAsync()
         {
+            await Clients.Caller.SendAsync("OnConnected",Context.ConnectionId);
             await base.OnConnectedAsync();
         }
     }

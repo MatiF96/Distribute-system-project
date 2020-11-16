@@ -5,6 +5,7 @@ using CinemaSystem.Repositories;
 using CinemaSystem.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,13 +27,21 @@ namespace CinemaSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSignalR();
+            services.AddSignalR((options) =>
+            {
+                options.EnableDetailedErrors = true;
+            });
             services.AddControllers();
             services.AddSwaggerGen();
             services.AddDbContext<CinemaDbContext>(options =>
             {
                 string connectionString = InDocker ? Configuration.GetConnectionString("DefaultConnection") : Configuration.GetConnectionString("MigrationConnection");
                 options.UseNpgsql(connectionString);
+            });
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
 
             services.AddScoped<IUsersRepository, UsersRepository>();
@@ -73,6 +82,10 @@ namespace CinemaSystem
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.UseEndpoints(endpoints =>
             {
