@@ -2,7 +2,6 @@ import { Container, Title } from './styled';
 import { useEffect, useState } from 'react';
 import MovieApi from "../../api/MoviesApi";
 import Input from '@material-ui/core/Input';
-import { Button } from '@material-ui/core';
 
 const EditMovie = ({ currentMovie, refreshMovie }) => {
   const [title, setTitle] = useState('');
@@ -62,7 +61,6 @@ const EditMovie = ({ currentMovie, refreshMovie }) => {
               onChange={handleChange}
               placeholder="Czas trwania filmu"
             />
-            <Button type="submit">Edit</Button>
           </form>
       </Container>
   )};

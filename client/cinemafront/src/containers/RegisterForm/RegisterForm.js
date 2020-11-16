@@ -53,7 +53,7 @@ const RegisterForm = (props) => {
               onChange={handleChange}
               placeholder="Wpisz hasło"
               />
-              <StyledButton type="submit" >Zaarejestruj</StyledButton>
+              <StyledButton type="submit" >Zarejestruj</StyledButton>
               {showAlert?<Alert>Niepoprawne dane!</Alert>:null}
           </StyledForm>
       </CenterContainer>
