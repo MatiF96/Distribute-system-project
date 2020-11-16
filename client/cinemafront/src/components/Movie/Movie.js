@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import {Container, DeleteIcon, Item, Label, EditLabel, Wrapper} from './styled'
-import HallsApi from "../../api/HallsApi";
+import MovieApi from "../../api/MoviesApi";
 import { withRouter } from "react-router-dom"
-import EditHall from '../EditHall/EditHall';
+import EditMovie from '../EditMovie';
 
-const Hall = (props) => {
-  const [hall, setHall] = useState(null)
+const Movie = (props) => {
+  const [movie, setMovie] = useState(null)
   const [editing, setEditing] = useState(false)
 
-  const getHall = id => {
-    HallsApi.get(id)
+  const getMovie = id => {
+    MovieApi.get(id)
     .then(response => {
-      setHall(response.data);
+      setMovie(response.data);
+      console.log(response.data);
     })
     .catch(error => {
       console.log(error);
     });
   }
 
-  const deleteHall = id => {
-    HallsApi.remove(id)
+  const deleteMovie = id => {
+    MovieApi.remove(id)
     .then(response => {
-      props.history.push('/halls')
+      props.history.push('/movies')
     })
     .catch(error => {
       console.log(error);
@@ -35,29 +36,30 @@ const Hall = (props) => {
 
   useEffect(() => {
     let id = props.match.params.id;
-    getHall(id)
+    getMovie(id)
     // eslint-disable-next-line
   }, [])
   return (
   <>
-    {hall?
+    {movie?
     <Container>
       <Wrapper>
         <Item>
-          <Label>Id: {hall.id}</Label>
-          <Label>Name: {hall.name}</Label>
+          <Label>Id: {movie.id}</Label>
+          <Label>Title: {movie.title}</Label>
+          <Label>Duration: {movie.duration}</Label>
         </Item>
         <Item>
           <EditLabel onClick={handleEditClick}>Edit</EditLabel>
         </Item>
         <Item>
-          <DeleteIcon onClick={() => deleteHall(hall.id)}/>
+          <DeleteIcon onClick={() => deleteMovie(movie.id)}/>
         </Item>
       </Wrapper>
       {
         editing?
         <Wrapper>
-          <EditHall currentHall={hall} refreshHall={() => getHall(hall.id)}/>
+          <EditMovie currentMovie={movie} refreshMovie={() => getMovie(movie.id)}/>
         </Wrapper>
         :
         null
@@ -67,4 +69,4 @@ const Hall = (props) => {
   </>
 )};
 
-export default withRouter(Hall);
+export default withRouter(Movie);

@@ -1,23 +1,23 @@
 import http from "./http-common";
 
 const getAll = () => {
-  return http.get("/Hales");
+  return http.get("/Movies");
 };
 
 const create = data => {
-    return http.post("/Hales", data);
+    return http.post("/Movies", data);
   };
 
 const get = id => {
-  return http.get(`/Hales/${id}`);
+  return http.get(`/Movies/${id}`);
 };
 
 const update = (id, data) => {
-  return http.post(`/Hales/${id}`, data);
+  return http.post(`/Movies/${id}`, data);
 };
 
 const remove = id => {
-  return http.delete(`/Hales/${id}`);
+  return http.delete(`/Movies/${id}`);
 };
 
 // eslint-disable-next-line
