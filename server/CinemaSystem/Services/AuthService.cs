@@ -1,13 +1,10 @@
-﻿using CinemaSystem.Database;
+﻿using System;
+using System.Text;
+using System.Threading.Tasks;
 using CinemaSystem.Database.Models;
 using CinemaSystem.Repositories;
 using CinemaSystem.Services.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Konscious.Security.Cryptography;
-using System.Text;
 
 namespace CinemaSystem.Services
 {
@@ -30,16 +27,22 @@ namespace CinemaSystem.Services
         }
 
         public async Task<UserDto> Register(AuthDto credentials)
-        {   
-            var user = new User
-            {
+        {
+            var users = await _usersRepository.GetAll();
+            var user = new User {
                 UserLogin = credentials.Username,
                 UserPassword = await HashPassword(credentials.Password),
-                UserType = UserRoles.ADMIN,
+                UserType = UserRoles.CUSTOMER,
             };
+            if (users.Count == 0) { user.UserType = UserRoles.ADMIN; };
 
             var result = await _usersRepository.AddUser(user);
             return new UserDto(result);
+        }
+
+        public async Task<bool> UserExists(string username)
+        {
+            return await _usersRepository.GetByUserName(username) != null;
         }
 
         private async Task<string> HashPassword(string password)
@@ -49,13 +52,12 @@ namespace CinemaSystem.Services
         }
         private async Task<byte[]> GetPasswordHash(string password)
         {
-            var argon2 = new Argon2i(Encoding.UTF8.GetBytes(password))
-            {
+            var argon2 = new Argon2i(Encoding.UTF8.GetBytes(password)) {
                 DegreeOfParallelism = 8,
                 MemorySize = 4096,
                 Iterations = 40
             };
-            return await argon2.GetBytesAsync(128); 
+            return await argon2.GetBytesAsync(128);
         }
         private async Task<bool> IsPaswordValid(string password, string hashedPassword)
         {

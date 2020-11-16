@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CinemaSystem.Services;
 using CinemaSystem.Services.DTO;
 using CinemaSystem.Utils;
@@ -33,9 +29,14 @@ namespace CinemaSystem.Controllers
 
         [HttpPost("register")]
         [ProducesResponseType(typeof(UserDto), 200)]
-        [ProducesResponseType(typeof(ErrorMessage), 400)]
+        [ProducesResponseType(400)]
         public async Task<ActionResult> Register(AuthDto credentials)
         {
+            if (await _authService.UserExists(credentials.Username))
+            {
+                return BadRequest(new ErrorMessage("Username already taken!"));
+            }
+
             var result = await _authService.Register(credentials);
             return Ok(result);
         }

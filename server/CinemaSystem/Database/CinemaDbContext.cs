@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CinemaSystem.Database.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 namespace CinemaSystem.Database
 {
     public partial class CinemaDbContext : DbContext
@@ -48,6 +46,7 @@ namespace CinemaSystem.Database
 
                 entity.Property(e => e.MovieId)
                     .HasColumnName("movie_id")
+                    .HasIdentityOptions(startValue: 8)
                     .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.MovieDuration)
@@ -72,6 +71,9 @@ namespace CinemaSystem.Database
                 entity.Property(e => e.ReservationId)
                     .HasColumnName("reservation_id")
                     .ValueGeneratedOnAdd();
+                entity.Property(e => e.IsCompleted)
+                .HasColumnName("reservation_completed")
+                .HasDefaultValue(false);
 
                 entity.Property(e => e.ReservationSeat).HasColumnName("reservation_seat");
 

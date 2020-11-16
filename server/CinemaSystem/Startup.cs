@@ -1,19 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CinemaSystem.Database;
+using CinemaSystem.Hubs;
 using CinemaSystem.Repositories;
 using CinemaSystem.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace CinemaSystem
 {
@@ -31,6 +26,7 @@ namespace CinemaSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSignalR();
             services.AddControllers();
             services.AddSwaggerGen();
             services.AddDbContext<CinemaDbContext>(options =>
@@ -49,6 +45,7 @@ namespace CinemaSystem
             services.AddScoped<IMoviesService, MoviesService>();
             services.AddScoped<IHalesService, HalesService>();
             services.AddScoped<IShowingsService, ShowingsService>();
+            services.AddScoped<IReservationsService, ReservationsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,7 +62,7 @@ namespace CinemaSystem
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 serviceScope.ServiceProvider.GetService<CinemaDbContext>().Database.Migrate();
@@ -80,6 +77,7 @@ namespace CinemaSystem
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ReservationHub>("/reservation");
             });
         }
     }
