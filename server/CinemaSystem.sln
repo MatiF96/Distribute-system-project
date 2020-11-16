@@ -7,6 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaSystem", "CinemaSyste
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{80D67E63-A127-4120-A86C-056DB20624F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{DD8E21EB-E1D9-4E75-957F-42D8185B3FF6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{76978541-BAF9-4323-A623-BB1E96065669} = {76978541-BAF9-4323-A623-BB1E96065669}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,10 @@ Global
 		{80D67E63-A127-4120-A86C-056DB20624F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D67E63-A127-4120-A86C-056DB20624F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D67E63-A127-4120-A86C-056DB20624F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8E21EB-E1D9-4E75-957F-42D8185B3FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8E21EB-E1D9-4E75-957F-42D8185B3FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8E21EB-E1D9-4E75-957F-42D8185B3FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8E21EB-E1D9-4E75-957F-42D8185B3FF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
