@@ -38,7 +38,7 @@ export const List = styled.ul`
     align-items: center;
 `
 
-export const Item = styled.li`
+export const StyledLink = styled(Link)`
     display: flex;
     flex-basis: 100%;
     font-size: 1.8em;
@@ -58,10 +58,17 @@ export const Item = styled.li`
     }
 `
 
+export const Row = styled.div`
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+`
+
 export const DeleteIcon = styled(DeleteOutlineOutlinedIcon)`
     cursor: pointer;
     && {
-    margin-left: 50px;
+    margin-left: 20px;
     font-size: 50px;
     }
 `

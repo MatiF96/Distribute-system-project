@@ -40,6 +40,7 @@ export const Item = styled.li`
     padding: 10px;
     margin: 5px;
     border-radius: 20px;
+    text-align: center;
     cursor: pointer;
 
     &:hover {

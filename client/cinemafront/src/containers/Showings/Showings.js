@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AddShowing from "../../components/AddShowing"
-import {Container, CenterContainer, Wrapper,Title, List, Item, DeleteIcon} from './styled'
+import {Container, CenterContainer, Wrapper,Title, List, Row, StyledLink, DeleteIcon} from './styled'
 import ShowingsApi from "../../api/ShowingsApi";
 
 const Showings = () => {
@@ -16,7 +16,7 @@ const Showings = () => {
     });
   }
 
-  const deleteShowing = id => {
+  const deleteShowing = (id) => {
     ShowingsApi.remove(id)
     .then(response => {
       getShowings();
@@ -38,13 +38,14 @@ const Showings = () => {
           {showings.length?
             <List>
               {showings.map(showing => (
-                <Item key={showing.id}>
-                {showing.hall.name} - {showing.movie.title} - czas trwania filmu: {showing.movie.duration}
-                <DeleteIcon onClick={() => deleteShowing(showing.id)}/>
-                </Item>
+                <Row>
+                  <StyledLink key={showing.id} to={'/reservation/' + showing.id} > 
+                    {showing.hall.name} - {showing.movie.title} - czas trwania filmu: {showing.movie.duration}
+                  </StyledLink>
+                  <DeleteIcon onClick={() => deleteShowing(showing.id)}/>
+                </Row>
               ))}
-            </List>
-            :
+            </List>:
             <Title>Brak seansów!</Title>}
         </Wrapper>
         <AddShowing refreshData={getShowings}/>

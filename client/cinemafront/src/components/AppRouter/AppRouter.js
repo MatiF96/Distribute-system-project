@@ -8,6 +8,7 @@ import Movie from '../Movie';
 import Halls from '../../containers/Halls';
 import Hall from '../Hall';
 import Employees from '../../containers/Employees';
+import Reservation from '../../components/Reservation'
 
 const AppRouter = () => {
   return (
@@ -22,6 +23,9 @@ const AppRouter = () => {
         <Route exact path='/halls' component={Halls} />
         <Route path="/halls/:id" component={Hall} />
         <Route exact path='/employees' component={Employees} />
+
+        <Route exact path='/reservation' component={Reservation} />
+        <Route path="/reservation/:id" component={Reservation} />
 
         <Route path="*" component={Showings} />
     </Switch>
