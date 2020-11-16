@@ -1,26 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\UnitTest\\UnitTest.csproj": {}
+    "C:\\dev\\Distribute-system-project\\UnitTest\\UnitTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj": {
+    "C:\\dev\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj",
+        "projectUniqueName": "C:\\dev\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj",
         "projectName": "CinemaSystem",
-        "projectPath": "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj",
-        "packagesPath": "C:\\Users\\matif\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\server\\CinemaSystem\\obj\\",
+        "projectPath": "C:\\dev\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj",
+        "packagesPath": "C:\\Users\\DamianF\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\Distribute-system-project\\server\\CinemaSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\matif\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\DamianF\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -96,27 +94,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\UnitTest\\UnitTest.csproj": {
+    "C:\\dev\\Distribute-system-project\\UnitTest\\UnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\UnitTest\\UnitTest.csproj",
+        "projectUniqueName": "C:\\dev\\Distribute-system-project\\UnitTest\\UnitTest.csproj",
         "projectName": "UnitTest",
-        "projectPath": "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\UnitTest\\UnitTest.csproj",
-        "packagesPath": "C:\\Users\\matif\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\UnitTest\\obj\\",
+        "projectPath": "C:\\dev\\Distribute-system-project\\UnitTest\\UnitTest.csproj",
+        "packagesPath": "C:\\Users\\DamianF\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\Distribute-system-project\\UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\matif\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\DamianF\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -128,8 +124,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj": {
-                "projectPath": "C:\\Users\\matif\\Source\\Repos\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj"
+              "C:\\dev\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj": {
+                "projectPath": "C:\\dev\\Distribute-system-project\\server\\CinemaSystem\\CinemaSystem.csproj"
               }
             }
           }
@@ -178,7 +174,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
