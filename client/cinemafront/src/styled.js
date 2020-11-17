@@ -11,6 +11,7 @@ const reset = css`
     font-family: 'Roboto', sans-serif;
     background: #ff6699;
     color: #f1f1f1;
+    width: 100%;
   }
 
   a {

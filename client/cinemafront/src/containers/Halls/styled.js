@@ -4,29 +4,30 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
     display: flex;
     justify-content: center;
-    min-height: 93vh;
+    min-width: 740px;
 `
 
 export const CenterContainer = styled.div`
     display: flex;
-    width: 1300px;
+    min-height: 90vh;
+    width: 1500px;
     flex-direction: column;
     align-items: center;
     background: #ff80aa;
-    padding: 0 100px;
+    padding: 10px 50px 50px 30px;
 `
 
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 10px;
+    padding: 10px 30px;
     align-items: center;
 `
 
 export const Title = styled.h1`
-    font-size: 2.4em;
-    padding: 15px;
+    font-size: 2.6em;
+    padding-bottom: 15px;
 `
 
 export const List = styled.ul`
@@ -50,7 +51,7 @@ export const StyledLink = styled(Link)`
     background:  #ff99dd;
     padding: 10px;
     margin: 5px;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
 
     &:hover {

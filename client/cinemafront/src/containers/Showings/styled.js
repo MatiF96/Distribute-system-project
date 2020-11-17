@@ -5,29 +5,29 @@ import DeleteOutlineOutlinedIcon from '@material-ui/icons/DeleteOutlineOutlined'
 export const Container = styled.div`
     display: flex;
     justify-content: center;
-    min-height: 93vh;
+    min-width: 740px;
 `
 
 export const CenterContainer = styled.div`
     display: flex;
-    width: 1300px;
+    min-height: 90vh;
+    width: 1500px;
     flex-direction: column;
     align-items: center;
     background: #ff80aa;
-    padding: 0 100px;
+    padding: 20px 50px 50px 30px;
 `
 
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
-    padding: 10px;
+    width: 80%;
     align-items: center;
 `
 
 export const Title = styled.h1`
-    font-size: 2.4em;
-    padding: 15px;
+    font-size: 2.8em;
+    padding-bottom: 15px;
 `
 
 export const List = styled.ul`
@@ -63,6 +63,7 @@ export const Row = styled.div`
     flex-basis: 100%;
     justify-content: center;
     align-items: center;
+    margin-top: 5px;
 `
 
 export const DeleteIcon = styled(DeleteOutlineOutlinedIcon)`

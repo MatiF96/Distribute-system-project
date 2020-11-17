@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import AddShowing from "../../components/AddShowing"
-import {Container, CenterContainer, Wrapper,Title, List, Row, StyledLink, DeleteIcon} from './styled'
+import {Container, CenterContainer, Wrapper, Title, List, Row, StyledLink, DeleteIcon} from './styled'
 import ShowingsApi from "../../api/ShowingsApi";
+import AuthService from "../../components/AuthService"
+import {ADMIN, EMPLOYEE} from "../../utils/Roles"
 
 const Showings = () => {
   const [showings, setShowings] = useState([])
@@ -38,17 +40,17 @@ const Showings = () => {
           {showings.length?
             <List>
               {showings.map(showing => (
-                <Row>
-                  <StyledLink key={showing.id} to={'/reservation/' + showing.id} > 
+                <Row key={showing.id}>
+                  <StyledLink to={'/reservation/' + showing.id} > 
                     {showing.hall.name} - {showing.movie.title} - czas trwania filmu: {showing.movie.duration}
                   </StyledLink>
-                  <DeleteIcon onClick={() => deleteShowing(showing.id)}/>
+                  {AuthService.getUserRole()===ADMIN||AuthService.getUserRole()===EMPLOYEE?<DeleteIcon onClick={() => deleteShowing(showing.id)}/>:null}
                 </Row>
               ))}
             </List>:
             <Title>Brak seansów!</Title>}
         </Wrapper>
-        <AddShowing refreshData={getShowings}/>
+        {AuthService.getUserRole()===ADMIN||AuthService.getUserRole()===EMPLOYEE?<AddShowing refreshData={getShowings}/>:null}
       </CenterContainer>
     </Container>
 )};

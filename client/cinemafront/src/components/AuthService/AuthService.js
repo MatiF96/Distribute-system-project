@@ -32,6 +32,12 @@ class AuthService {
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));;
   }
+
+  getUserRole() {
+    const user = JSON.parse(localStorage.getItem('user'))
+    return user?user.role:null;
+  }
+
 }
 
 export default new AuthService();

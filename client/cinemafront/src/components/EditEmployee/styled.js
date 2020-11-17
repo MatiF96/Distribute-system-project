@@ -3,17 +3,17 @@ import { Button } from '@material-ui/core';
 
 export const Container = styled.div`
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
-    padding: 10px;
-    border-radius: 20px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 30px;
 `
 
 export const Wrapper = styled.div`
     display: flex;
-    flex: 1;
-    width: 800px;
+    min-width: 80%;
     background:  #ff99dd;
     align-items: center;
     justify-content: center;
@@ -26,7 +26,7 @@ export const Title = styled.h1`
     display: flex;
     flex: 1;
     font-weight: bold;
-    font-size: 1em;
+    font-size: 1.2em;
     margin: 5px;
     white-space: nowrap;
 `
@@ -43,6 +43,6 @@ export const StyledButton = styled(Button)`
 
 export const CurrentButton = styled(StyledButton)`
     &&{
-        background: #ff66cc;
+        background: #ff4d94;
     }
 `

@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     padding: 20px;
     margin: 10px;
-    border-radius: 20px;
+    border-radius: 30px;
 `
 
 export const Item = styled.span`

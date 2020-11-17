@@ -4,24 +4,24 @@ import { TextField, Button } from '@material-ui/core';
 export const Container = styled.div`
     display: flex;
     justify-content: center;
-    min-height: 93vh;
+    min-width: 740px;
 `
 
 export const CenterContainer = styled.div`
     display: flex;
-    width: 1300px;
+    min-height: 100vh;
+    width: 1500px;
     flex-direction: column;
     align-items: center;
     background: #ff80aa;
-    padding: 0 100px;
+    padding: 20px 50px 50px 30px;
 `
 
 export const StyledForm = styled.form`
-    width: 100px;
     display: flex;
+    width: 90%;
     flex-direction: column;
     align-items: center;
-    width: 100%;
     padding: 10px;
     background: #ff99bb;
     border-radius: 20px;
@@ -30,27 +30,31 @@ export const StyledForm = styled.form`
 
 export const Text = styled(TextField)`
     &&{
-        width: 400px;
+        min-width: 500px;
         padding: 20px;
         background: #ffb3d9;
-        border-radius: 20px;
+        border-radius: 30px;
         margin-bottom: 10px;
     }
 `
 
 export const StyledButton = styled(Button)`
     &&{
-        width: 200px;
-        margin:20px;
+        min-width: 240px;
+        margin: 20px;
         padding: 10px;
         background: #ffb3d9;
-        font-size: 1.2em;
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #e6e6e6;
+        border-radius: 20px;
     }
 `
 
 export const Label = styled.p`
-    font-size: 1.4em;
+    font-size: 1.8em;
     font-weight: bold;
+    margin: 5px;
 `
 
 export const Alert = styled(Label)`

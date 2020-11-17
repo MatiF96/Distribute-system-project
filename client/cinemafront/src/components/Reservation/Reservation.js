@@ -54,7 +54,7 @@ const Reservation = (props) => {
       setTimeout(() => {
         setBlocked(false)
         setEditing(false)
-      },5000)
+      },20000)
     })
     // eslint-disable-next-line
   }, [])
@@ -66,7 +66,7 @@ const Reservation = (props) => {
           {blocked?
           <BlockedItem>Rezerwacja{!editing?", poczekaj, aż ktoś inny zakończy":null}</BlockedItem>:
           <Item onClick={handleClick}>Kliknij, żeby zarezerwować bilet na: {showing?showing.movie.title:null}</Item>}
-          {editing?<Alert>Teraz mozesz edytowac!</Alert>:null}
+          {editing?<Alert>Ta osoba może teraz zrobić sobie rezerwacje!</Alert>:null}
         </Wrapper>
       </CenterContainer>
     </Container>

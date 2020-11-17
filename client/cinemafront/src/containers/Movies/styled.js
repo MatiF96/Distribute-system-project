@@ -4,23 +4,23 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
     display: flex;
     justify-content: center;
-    min-height: 93vh;
+    min-width: 740px;
 `
 
 export const CenterContainer = styled.div`
     display: flex;
-    width: 1300px;
+    min-height: 90vh;
+    width: 1500px;
     flex-direction: column;
     align-items: center;
     background: #ff80aa;
-    padding: 0 100px;
+    padding: 20px 50px 50px 30px;
 `
 
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 10px;
     align-items: center;
 `
 
@@ -41,14 +41,14 @@ export const StyledLink = styled(Link)`
     display: flex;
     width: 80%;
     font-size: 1.8em;
-    min-height: 100px;
+    min-height: 120px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
     background:  #ff99dd;
     padding: 10px;
     margin: 5px;
-    border-radius: 20px;
+    border-radius: 30px;
     cursor: pointer;
 
     &:hover {

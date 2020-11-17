@@ -7,7 +7,8 @@ export const Container = styled.nav`
   position: sticky;
   top:0;
   width:100%;
-  height: 65px;
+  min-height: 65px;
+  min-width: 740px;
   font-size: 1.8rem;
   color: #f1f1f1;
   background: #ff3377;
@@ -29,7 +30,7 @@ export const AuthContainer = styled.div`
     align-items:center;
 
     p{
-      font-size: 1.1rem;
+      font-size: 0.7em;
       margin:10px;
     }
 `
@@ -37,7 +38,8 @@ export const AuthContainer = styled.div`
 export const StyledButton = styled(Button)`
     &&{
       color: #f1f1f1;
-      font-size: 1.2rem;
+      font-size: 0.8em;
+      margin: 5px;
     }
 `
 

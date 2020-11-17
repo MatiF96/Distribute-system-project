@@ -6,19 +6,19 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    margin: 10px;
     padding: 10px;
-    width: 280px;
+    min-width: 400px;
     background: #ff99bb;
-    border-radius: 20px;
+    border-radius: 30px;
 `
 
 export const Title = styled.p`
     display: flex;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.6em;
-    margin: 5px;
+    font-size: 1.8em;
+    margin: 15px;
 `
 
 export const StyledForm = styled.form`
@@ -37,10 +37,13 @@ export const StyledInput = styled(Input)`
 
 export const StyledButton = styled(Button)`
     &&{
-        width: 200px;
-        margin:20px;
+        min-width: 240px;
+        margin: 20px;
         padding: 10px;
         background: #ffb3d9;
-        font-size: 0.8em;
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #e6e6e6;
+        border-radius: 20px;
     }
 `

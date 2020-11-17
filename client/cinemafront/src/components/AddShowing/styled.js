@@ -4,20 +4,21 @@ import { Button } from '@material-ui/core';
 
 export const Container = styled.div`
     display: flex;
-    width: 100%;
+    width: 90%;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
-    padding: 10px;
     background:  #ff99dd;
-    border-radius: 20px;
+    border-radius: 30px;
+    margin-top: 30px;
+    padding: 10px;
 `
 
 export const InnerContainer = styled.div`
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    margin: 20px;
-    padding: 10px;
+    margin: 10px;
     border-radius: 20px;
 `
 
@@ -25,8 +26,8 @@ export const Title = styled.p`
     display: flex;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.8em;
-    margin: 5px;
+    font-size: 2.6em;
+    margin: 20px 20px;
 `
 
 export const StyledForm = styled.form`
@@ -50,12 +51,16 @@ export const StyledButton = styled(Button)`
         margin:20px;
         padding: 10px;
         background: #ffb3d9;
-        font-size: 1em;
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #e6e6e6;
+        border-radius: 20px;
     }
 `
 
 export const List = styled.ul`
     display: flex;
+    flex: 1 1;
     flex-direction: column;
     width: 100%;
     flex-wrap: wrap;
@@ -65,7 +70,8 @@ export const List = styled.ul`
 
 export const Item = styled.li`
     display: flex;
-    background: #ff99c1;
+    width: 80%;
+    background: #ff80b3;
     font-size: 1.8em;
     min-height: 50px;
     min-width: 150px;
@@ -73,13 +79,16 @@ export const Item = styled.li`
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 20px;
+    padding: 15px 10px;
+    margin: 6px;
+    border-radius: 30px;
     cursor: pointer;
 
+    &:hover {
+        background: #ffb3e6;
+    }
 `
 
 export const ClickedItem = styled(Item)`
-    background: #ff80d5;
+    background: #ff4d94;
 `
