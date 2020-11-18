@@ -2,42 +2,44 @@ import axios from "axios";
 
 const API_URL = "/api/Auth/";
 
-class AuthService {
-  login(username, password) {
-    return axios
-      .post(API_URL + "login", {
-        username,
-        password
-      })
-      .then(response => {
-        if (response.data.username) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
-
-        return response.data;
-      });
-  }
-
-  logout() {
-    localStorage.removeItem("user");
-  }
-
-  register(username, password) {
-    return axios.post(API_URL + "register", {
+export const login = async (username, password) => {
+    const response = await axios
+    .post(API_URL + "login", {
       username,
       password
     });
+  if (response.data.username) {
+    localStorage.setItem("user", JSON.stringify(response.data));
+  }
+  return response.data;
   }
 
-  getCurrentUser() {
-    return JSON.parse(localStorage.getItem('user'));;
-  }
-
-  getUserRole() {
-    const user = JSON.parse(localStorage.getItem('user'))
-    return user?user.role:null;
-  }
-
+export const logout = () => {
+  localStorage.removeItem("user");
 }
 
-export default new AuthService();
+export const register = (username, password) => {
+  return axios.post(API_URL + "register", {
+    username,
+    password
+  });
+}
+
+export const getCurrentUser = () => {
+  return JSON.parse(localStorage.getItem('user'));;
+}
+
+export const getUserRole = () => {
+  const user = JSON.parse(localStorage.getItem('user'))
+  return user?user.role:null;
+}
+
+
+// eslint-disable-next-line
+export default {
+  login: login,
+  logout,
+  register,
+  getCurrentUser,
+  getUserRole
+};

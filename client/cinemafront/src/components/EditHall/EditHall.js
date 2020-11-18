@@ -1,7 +1,12 @@
-import { Container, Title } from './styled';
+import {
+  Container,
+  Title,
+  StyledForm,
+  StyledInput,
+  StyledButton 
+} from './styled';
 import { useEffect, useState } from 'react';
 import HallsApi from "../../api/HallsApi";
-import Input from '@material-ui/core/Input';
 
 const EditHall = ({ currentHall, refreshHall }) => {
   const [name, setName] = useState('');
@@ -35,16 +40,18 @@ const EditHall = ({ currentHall, refreshHall }) => {
     return (
       <Container>
         <Title>Edytuj salę:</Title>
-          <form onSubmit={handleSubmit}>
-            <Input
+          <StyledForm onSubmit={handleSubmit}>
+            <StyledInput
               type="text"
               id="title"
               name="title"
               value={name}
               onChange={handleChange}
               placeholder="Nazwa sali"
+              required
             />
-          </form>
+            <StyledButton type="submit"> Edytuj! </StyledButton>
+          </StyledForm>
       </Container>
   )};
   

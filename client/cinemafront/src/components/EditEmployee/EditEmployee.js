@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container, Wrapper, Title, StyledButton, CurrentButton } from './styled';
 import EmployeesApi from "../../api/EmployeesApi";
+import { ADMIN, EMPLOYEE, CUSTOMER} from "../../utils/Roles"
 
 const EditEmployee = ({ employee, refreshData }) => {
 
@@ -11,7 +12,6 @@ const EditEmployee = ({ employee, refreshData }) => {
       role: role
     };
 
-    console.log(data)
     EmployeesApi.update(employee.id,data)
     .then((res) => {
       refreshData()
@@ -21,28 +21,26 @@ const EditEmployee = ({ employee, refreshData }) => {
     });
   }
 
-  const handleAdminClick = () => {
-    ChangeRole("ADMIN")
+  const handleClick = (role) => {
+    ChangeRole(role)
     refreshData();
   };
 
-  const handleCustomerClick = () => {
-    ChangeRole("CUSTOMER")
-    refreshData();
-  };
 
-  const handleEmployeeClick = () => {
-    ChangeRole("EMPLOYEE")
-    refreshData();
-  };
 
     return (
       <Container>
         <Wrapper>
           <Title>{employee.username} :</Title>
-          {employee.role==="ADMIN"?<CurrentButton>ADMIN</CurrentButton>:<StyledButton onClick={handleAdminClick}>ADMIN</StyledButton>}
-          {employee.role==="CUSTOMER"?<CurrentButton>CUSTOMER</CurrentButton>:<StyledButton onClick={handleCustomerClick}>CUSTOMER</StyledButton>}
-          {employee.role==="EMPLOYEE"?<CurrentButton>EMPLOYEE</CurrentButton>:<StyledButton onClick={handleEmployeeClick}>EMPLOYEE</StyledButton>}
+          {employee.role===ADMIN?
+            <CurrentButton>ADMIN</CurrentButton>:
+            <StyledButton onClick={() => handleClick(ADMIN)}>ADMIN</StyledButton>}
+          {employee.role===EMPLOYEE?
+            <CurrentButton>EMPLOYEE</CurrentButton>:
+            <StyledButton onClick={() => handleClick(EMPLOYEE)}>EMPLOYEE</StyledButton>}
+          {employee.role===CUSTOMER?
+            <CurrentButton>CUSTOMER</CurrentButton>:
+            <StyledButton  onClick={() => handleClick(CUSTOMER)}>CUSTOMER</StyledButton>}
         </Wrapper>
       </Container>
   )};

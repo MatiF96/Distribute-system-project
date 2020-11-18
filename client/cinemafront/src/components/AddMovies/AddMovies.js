@@ -46,6 +46,7 @@ const AddMovie = ({ refreshData }) => {
               value={title}
               onChange={handleChange}
               placeholder="Nazwa filmu"
+              required
             />
             <StyledInput
               type="text"
@@ -54,6 +55,7 @@ const AddMovie = ({ refreshData }) => {
               value={duration}
               onChange={handleChange}
               placeholder="Czas trwania (minuty)"
+              required
             />
             <StyledButton type="submit"> Dodaj </StyledButton>
           </StyledForm>

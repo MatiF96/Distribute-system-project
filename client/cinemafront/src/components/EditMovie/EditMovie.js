@@ -1,7 +1,7 @@
-import { Container, Title } from './styled';
+import { Container, Title, FormContainer, StyledInput, StyledButton } from './styled';
 import { useEffect, useState } from 'react';
 import MovieApi from "../../api/MoviesApi";
-import Input from '@material-ui/core/Input';
+
 
 const EditMovie = ({ currentMovie, refreshMovie }) => {
   const [title, setTitle] = useState('');
@@ -44,24 +44,25 @@ const EditMovie = ({ currentMovie, refreshMovie }) => {
     return (
       <Container>
         <Title>Edytuj film:</Title>
-          <form onSubmit={handleSubmit}>
-            <Input
-              type="text"
-              id="title"
-              name="title"
-              value={title}
-              onChange={handleChange}
-              placeholder="Nazwa filmu"
-            />
-            <Input
-              type="text"
-              id="duration"
-              name="duration"
-              value={duration}
-              onChange={handleChange}
-              placeholder="Czas trwania filmu"
-            />
-          </form>
+        <FormContainer onSubmit={handleSubmit}>
+          <StyledInput
+            type="text"
+            id="title"
+            name="title"
+            value={title}
+            onChange={handleChange}
+            placeholder="Nazwa filmu"
+          />
+          <StyledInput
+            type="text"
+            id="duration"
+            name="duration"
+            value={duration}
+            onChange={handleChange}
+            placeholder="Czas trwania filmu"
+          />
+          <StyledButton type="submit"> Edit </StyledButton>
+         </FormContainer>
       </Container>
   )};
   

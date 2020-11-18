@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
     display: flex;
-    min-width: 80%;
+    width: 80%;
     background:  #ff99dd;
     align-items: center;
     justify-content: center;
@@ -38,6 +38,7 @@ export const StyledButton = styled(Button)`
         padding: 10px;
         background: #ffb3e6;
         font-size: 0.8em;
+        border-radius: 20px;
     }
 `
 

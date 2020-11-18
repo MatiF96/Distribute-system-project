@@ -36,6 +36,7 @@ const AddHall = ({ refreshData }) => {
               value={name}
               onChange={handleChange}
               placeholder="Nazwa sali"
+              required
             />
             <StyledButton type="submit"> Dodaj </StyledButton>
           </StyledForm>

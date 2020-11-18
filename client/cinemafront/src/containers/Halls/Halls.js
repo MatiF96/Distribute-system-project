@@ -3,8 +3,6 @@ import AddHall from "../../components/AddHall"
 import {Container, Wrapper,Title, List, StyledLink} from './styled'
 import { CenterContainer } from './styled';
 import HallsApi from "../../api/HallsApi";
-import AuthService from "../../components/AuthService"
-import {ADMIN, EMPLOYEE} from "../../utils/Roles"
 
 const Halls = () => {
   const [halls, setHalls] = useState([])
