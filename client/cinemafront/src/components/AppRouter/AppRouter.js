@@ -8,7 +8,9 @@ import Movie from '../Movie';
 import Halls from '../../containers/Halls';
 import Hall from '../Hall';
 import Employees from '../../containers/Employees';
-import Reservation from '../../components/Reservation'
+import Reservation from '../../components/Reservation';
+import { EmployeeRoute } from '../../utils/EmployeeRoute';
+import { CustomerRoute } from '../../utils/CustomerRoute';
 
 const AppRouter = () => {
   return (
@@ -18,14 +20,14 @@ const AppRouter = () => {
         <Route exact path='/login' component={LoginForm} />
         <Route exact path='/register' component={RegisterForm} />
 
-        <Route exact path='/movies' component={Movies} />
-        <Route path='/movies/:id' component={Movie} />
-        <Route exact path='/halls' component={Halls} />
-        <Route path="/halls/:id" component={Hall} />
-        <Route exact path='/employees' component={Employees} />
+        <CustomerRoute exact path='/reservation' component={Reservation} />
+        <CustomerRoute path="/reservation/:id" component={Reservation} />
 
-        <Route exact path='/reservation' component={Reservation} />
-        <Route path="/reservation/:id" component={Reservation} />
+        <EmployeeRoute exact path='/movies' component={Movies} />
+        <EmployeeRoute path='/movies/:id' component={Movie} />
+        <EmployeeRoute exact path='/halls' component={Halls} />
+        <EmployeeRoute path="/halls/:id" component={Hall} />
+        <EmployeeRoute exact path='/employees' component={Employees} />
 
         <Route path="*" component={Showings} />
     </Switch>

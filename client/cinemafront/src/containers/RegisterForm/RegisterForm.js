@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Container, CenterContainer, StyledForm,  Text, StyledButton, Label, Alert} from './styled';
+import {Container, CenterContainer, StyledForm,  Text, StyledButton, Label, Alert, Message} from './styled';
 import AuthService from "../../components/AuthService";
 import { withRouter } from "react-router-dom"
 
@@ -34,28 +34,29 @@ const RegisterForm = (props) => {
   return (
     <Container>
       <CenterContainer>
-          <StyledForm onSubmit={handleSubmit}>
-              <Label type="text">Login:</Label>
-              <Text 
-              type="text"
-              id="login"
-              name="login"
-              value={login}
-              onChange={handleChange}
-              placeholder="Wpisz nowy login"
-              />
-              <Label>Hasło:</Label>
-              <Text 
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-              placeholder="Wpisz hasło"
-              />
-              <StyledButton type="submit" >Zarejestruj</StyledButton>
-              {showAlert?<Alert>Niepoprawne dane!</Alert>:null}
-          </StyledForm>
+        <Message>Zarejestruj się!</Message>
+        <StyledForm onSubmit={handleSubmit}>
+            <Label type="text">Login:</Label>
+            <Text 
+            type="text"
+            id="login"
+            name="login"
+            value={login}
+            onChange={handleChange}
+            placeholder="Wpisz nowy login"
+            />
+            <Label>Hasło:</Label>
+            <Text 
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            placeholder="Wpisz hasło"
+            />
+            <StyledButton type="submit" >Zarejestruj</StyledButton>
+            {showAlert?<Alert>Niepoprawne dane!</Alert>:null}
+        </StyledForm>
       </CenterContainer>
     </Container>
 )};

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Container, CenterContainer, StyledForm,  Text, StyledButton, Label, Alert} from './styled';
+import {Container, CenterContainer, StyledForm,  Text, StyledButton, Label, Alert, Message} from './styled';
 import AuthService from "../../components/AuthService";
 import { withRouter } from "react-router-dom"
 
@@ -35,28 +35,29 @@ const LoginForm = (props) => {
   return (
     <Container>
       <CenterContainer>
-          <StyledForm onSubmit={handleSubmit}>
-              <Label type="text">Login:</Label>
-              <Text 
-              type="text"
-              id="login"
-              name="login"
-              value={login}
-              onChange={handleChange}
-              placeholder="Podaj login"
-              />
-              <Label>Hasło:</Label>
-              <Text 
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-              placeholder="Podaj hasło"
-              />
-              <StyledButton type="submit" >Zaloguj</StyledButton>
-              {showAlert?<Alert>Niepoprawne dane!</Alert>:null}
-          </StyledForm>
+        <Message>Zaloguj się, aby dokonać rezerwacji</Message>
+        <StyledForm onSubmit={handleSubmit}>
+            <Label type="text">Login:</Label>
+            <Text 
+            type="text"
+            id="login"
+            name="login"
+            value={login}
+            onChange={handleChange}
+            placeholder="Podaj login"
+            />
+            <Label>Hasło:</Label>
+            <Text 
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            placeholder="Podaj hasło"
+            />
+            <StyledButton type="submit" >Zaloguj</StyledButton>
+            {showAlert?<Alert>Niepoprawne dane!</Alert>:null}
+        </StyledForm>
       </CenterContainer>
     </Container>
 )};

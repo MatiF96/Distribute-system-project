@@ -51,8 +51,14 @@ export const StyledButton = styled(Button)`
     }
 `
 
+export const Message = styled.h1`
+    font-size: 2.8em;
+    font-weight: bold;
+    margin: 20px;
+`
+
 export const Label = styled.p`
-    font-size: 1.8em;
+    font-size: 2.2em;
     font-weight: bold;
     margin: 5px;
 `

@@ -5,6 +5,7 @@ import {PagesContext} from '../../contexts/PagesContext';
 import {withRouter} from "react-router-dom"
 import { StyledLink } from '../NavItem/styled';
 import AuthService from "../AuthService";
+import { ADMIN, EMPLOYEE} from "../../utils/Roles"
 
 const Navbar = (props) => {
   const { pages } = useContext(PagesContext);
@@ -16,7 +17,13 @@ const Navbar = (props) => {
   return (
   <Container>
       <Menu>
-        {pages.map((page, index) => <NavItem key={page.url} href={page.url}>{page.label}</NavItem>)}
+        {pages.map((page) => 
+          !page.protected?
+          <NavItem key={page.url} href={page.url}>{page.label}</NavItem>: // PUBLIC NAVLINKS
+          AuthService.getUserRole() === ADMIN || AuthService.getUserRole() === EMPLOYEE? // PROTECTED NAVLINKS
+          <NavItem key={page.url} href={page.url}>{page.label}</NavItem>:
+          null
+        )}
       </Menu>
       <AuthContainer>
         {AuthService.getCurrentUser()?
