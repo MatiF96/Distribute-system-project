@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const CenterContainer = styled.div`
     display: flex;
-    min-height: 90vh;
+    min-height: 100vh;
     width: 1500px;
     flex-direction: column;
     align-items: center;

@@ -34,10 +34,14 @@ export const getUserRole = () => {
   return user?user.role:null;
 }
 
+export const getUserId = () => {
+  const user = JSON.parse(localStorage.getItem('user'))
+  return user?user.id:null;
+}
 
 // eslint-disable-next-line
 export default {
-  login: login,
+  login,
   logout,
   register,
   getCurrentUser,

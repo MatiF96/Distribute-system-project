@@ -5,6 +5,7 @@ import ReservationsApi from "../../api/ReservationApi";
 import * as signalR from '@microsoft/signalr';
 import AuthService from "../AuthService"
 import {withRouter} from "react-router-dom"
+import AddReservation from "../../components/AddReservation"
 
 const Reservation = (props) => {
   
@@ -54,7 +55,7 @@ const Reservation = (props) => {
       setTimeout(() => {
         setBlocked(false)
         setEditing(false)
-      },20000)
+      },5000)
     })
     // eslint-disable-next-line
   }, [])
@@ -66,7 +67,9 @@ const Reservation = (props) => {
           {blocked?
           <BlockedItem>Rezerwacja{!editing?", poczekaj, aż ktoś inny zakończy":null}</BlockedItem>:
           <Item onClick={handleClick}>Kliknij, żeby zarezerwować bilet na: {showing?showing.movie.title:null}</Item>}
-          {editing?<Alert>Ta osoba może teraz zrobić sobie rezerwacje!</Alert>:null}
+
+          {editing?<AddReservation />:null}
+          <AddReservation />
         </Wrapper>
       </CenterContainer>
     </Container>
