@@ -20,11 +20,16 @@ const remove = id => {
   return http.delete(`/Showings/${id}`);
 };
 
+const getTakenSeats = id => {
+  return http.get(`/Showings/${id}/seats`);
+};
+
 // eslint-disable-next-line
 export default {
   getAll,
   create,
   get,
   update,
-  remove
+  remove,
+  getTakenSeats
 };

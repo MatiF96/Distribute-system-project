@@ -1,61 +1,105 @@
-import { Container, CenterContainer, Title, List, Seat, StyledButton } from './styled';
+import { Container, CenterContainer, Title, List, Seat, StyledButton, Display } from './styled';
 import { useEffect, useState } from 'react';
 import ReservationApi from "../../api/ReservationApi";
+import ShowingsApi from "../../api/ShowingsApi"
 import AuthService from "../../components/AuthService"
+import * as signalR from '@microsoft/signalr';
 
 const SEATSAMOUNT = 50;
 
-const AddReservation = () => {
+const AddReservation = ({showing}) => {
   const [seats, setSeats] = useState([]);
-  const [checked, setChecked] = useState([]);
+  const [hall, setHall] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    
+  const handleReserve = (seatId) => {
     let data = {
-      showingId: 1,
+      showingId: showing.id,
       userId: AuthService.getUserId(),
-      seat: checked
+      seat: seatId
     };
+    console.log(data)
 
     ReservationApi.create(data)
     .then(() => {
-
+      loadSeats()
     })
     .catch(e => {
-      console.log(e);
+    console.log(e);
     });
   }
 
-  const handleSeatClick= (id) => {
-    console.log(id) //trzeba dodac do checked, potem do api
+  const handleSubmit= () => {
+    let data = {
+      showingId: showing.id,
+      userId: AuthService.getUserId(),
+    };
+
+    ReservationApi.complete(data)
+    .then(() => {
+      console.log("Zatwierdzono rezerwacje")
+    })
+    .catch(e => {
+    console.log(e);
+    });
   }
 
   const loadSeats = () => {
-    const hall = [];
 
-    for(let i = 1; i <= SEATSAMOUNT; i++)
-    {
-    hall.push(<Seat key={`place_${i}`} onClick={() => handleSeatClick(i)}>{i}</Seat>)
-    }
+    ShowingsApi.getTakenSeats(showing.id)
+    .then((response) => {
 
-    setSeats(hall)
+      let takenSeats = response.data.map(item => item.number)
+      let newSeats = []
+      for(let i = 1; i <= SEATSAMOUNT; i++)
+      {
+        if(takenSeats.includes(i))
+        {
+          newSeats.push({id: i, isTaken: true})
+        }
+        else{
+          newSeats.push({id: i, isTaken: false})
+        }
+      }
+      setSeats(newSeats)
+
+    })
+    .catch(e => {
+    console.log(e);
+    });
   }
 
+  const createHall = () => {
+    setHall([])
+    seats.map(seat => 
+    setHall(prevState => [...prevState, <Seat isTaken={seat.isTaken} key={`seat_${seat.id}`} onClick={() => handleReserve(seat.id)}>{seat.id}</Seat>]))
+  }
 
-  useEffect(() =>{
-    loadSeats()
-  },[])
-    return (
-    <Container>
-      <CenterContainer>
-        <Title>Wybierz miejsca na sali:</Title>
-        <List>
-          {seats}
-        </List>
-        <StyledButton> Zatwierdzam </StyledButton>
-      </CenterContainer>
-    </Container>
+  const hubConnection = new signalR.HubConnectionBuilder().withUrl("/reservation").build();
+
+  useEffect(() => {
+    hubConnection.start();
+    hubConnection.on("OnSeatsChanged", () => {
+      console.log("Ktoś zarezerwowal... Odswiezanie")
+      loadSeats()
+    })
+    // eslint-disable-next-line
+  }, [])
+
+  useEffect(loadSeats, [])
+
+  useEffect(createHall, [seats])
+
+  return (
+  <Container>
+    <CenterContainer>
+      <Title>Wybierz miejsca na sali:</Title>
+      <Display>EKRAN</Display>
+      <List>
+        {hall}
+      </List>
+      <StyledButton onClick={handleSubmit}> Zatwierdzam </StyledButton>
+    </CenterContainer>
+  </Container>
   )};
   
   export default AddReservation;

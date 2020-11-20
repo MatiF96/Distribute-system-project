@@ -45,5 +45,6 @@ export default {
   logout,
   register,
   getCurrentUser,
-  getUserRole
+  getUserRole,
+  getUserId
 };

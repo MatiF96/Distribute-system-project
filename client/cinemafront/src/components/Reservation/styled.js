@@ -41,17 +41,4 @@ export const Item = styled.li`
     margin: 5px;
     border-radius: 20px;
     text-align: center;
-    cursor: pointer;
-
-    &:hover {
-        background: #ffb3e6;
-    }
-`
-
-export const BlockedItem = styled(Item)`
-    background:  red;
-
-    &:hover {
-        background: red;
-    }
 `

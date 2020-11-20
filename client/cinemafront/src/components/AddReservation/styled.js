@@ -11,6 +11,7 @@ export const CenterContainer = styled.div`
     flex-direction: column;
     align-items: center;
     background: #ff80aa;
+    min-width: 1000px;
     padding: 20px 50px 50px 30px;
 `
 
@@ -30,7 +31,7 @@ export const Title = styled.p`
     display: flex;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.8em;
+    font-size: 2em;
     margin: 15px;
 `
 
@@ -44,13 +45,13 @@ export const Seat = styled.li`
     align-items: center;
     min-width: 40px;
     min-height: 40px;
-    background: #ff99dd;
+    background: ${props => props.isTaken ? "#ff4d94" : "#ff99dd"};
     border: 1px solid black;
     border-radius: 10px;
     cursor: pointer;
 
     &:hover {
-        background: #ffb3e6;
+        background: ${props => props.isTaken ? "#ff4d94" : "#ffb3e6"};
     }
 `
 
@@ -65,4 +66,17 @@ export const StyledButton = styled(Button)`
         color: #e6e6e6;
         border-radius: 20px;
     }
+`
+
+export const Display = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 20px;
+    margin: 20px;
+    background: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 5px;
+
 `
